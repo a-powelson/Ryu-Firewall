@@ -128,7 +128,7 @@ class Controller1(app_manager.RyuApp):
 				actions = [parser.OFPActionOutput(out_port)]
 				parser = datapath.ofproto_parser
 				
-				out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id, in_port=msg.match['in_port'], actions=actions)
+				out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id, in_port=msg.match['in_port'], actions=actions, data=pkt)
 				datapath.send_msg(out)
 
 	def add_flow(self, datapath, priority, match, actions):
